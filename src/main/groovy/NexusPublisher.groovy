@@ -61,4 +61,8 @@ toMap(options.As).each { asset.addAttribute(it.key, it.value) }
 component.addAsset(asset)
 
 // upload to nexus repository
-client.upload(options.repository, component)
+if(options.tagname) {
+    client.upload(options.repository, component, options.tagname)
+} else {
+    client.upload(options.repository, component)
+}
